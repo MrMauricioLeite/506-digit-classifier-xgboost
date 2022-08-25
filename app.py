@@ -25,13 +25,12 @@ filename = open('model_outputs/scaler.pkl', 'rb')
 scaler = pickle.load(filename)
 filename.close()
 
-filename = open('analysis/optimization/rf_grid_model.pkl', 'rb')
-rf_model = pickle.load(filename)
+filename = 'analysis/optimization/rf_grid_model.tar.gz'
+rf_model = load_zipped_pickle(filename)
 filename.close()
 
-filename = open('analysis/optimization/rf_grid_model.tar.gz', 'rb')
-# xgb_model = pickle.load(filename)
-xgb_model = load_zipped_pickle(filename)
+filename = open('analysis/optimization/xgb_grid_model.pkl', 'rb')
+xgb_model = pickle.load(filename)
 filename.close()
 
 
