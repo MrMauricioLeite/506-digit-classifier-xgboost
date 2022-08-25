@@ -16,7 +16,7 @@ import pickle
 
 def load_zipped_pickle(filename):
     with gzip.open(filename, 'rb') as f:
-        loaded_object = cPickle.load(f)
+        loaded_object = pickle.load(f)
         return loaded_object
      
 ########### open the pickle file ######
