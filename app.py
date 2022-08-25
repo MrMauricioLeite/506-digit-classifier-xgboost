@@ -1,4 +1,5 @@
 import numpy as np
+import gzip
 from skimage import io
 import dash
 from dash.exceptions import PreventUpdate
@@ -13,18 +14,24 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pickle
 
+def load_zipped_pickle(filename):
+    with gzip.open(filename, 'rb') as f:
+        loaded_object = cPickle.load(f)
+        return loaded_object
+     
 ########### open the pickle file ######
 
 filename = open('model_outputs/scaler.pkl', 'rb')
 scaler = pickle.load(filename)
 filename.close()
 
-filename = open('model_outputs/rf_model.pkl', 'rb')
+filename = open('analysis/optimization/rf_grid_model.pkl', 'rb')
 rf_model = pickle.load(filename)
 filename.close()
 
-filename = open('model_outputs/xgb_model.pkl', 'rb')
-xgb_model = pickle.load(filename)
+filename = open('analysis/optimization/xgb_grid_model.pkl', 'rb')
+# xgb_model = pickle.load(filename)
+xgb_model = load_zipped_pickle(filename)
 filename.close()
 
 
